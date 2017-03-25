@@ -1,0 +1,34 @@
+.btn-get-info{
+
+	margin-top: 25px;
+	color: $mainRed;
+	font-weight: 900;
+	&:hover{
+
+	background: $mainRed;
+	color: #ffffff;
+}
+}
+
+.card-main{
+	margin-top: 25px;
+ 
+ &__btn{
+
+ 	background: $mainRed;
+ 	color:#ffffff;
+ }
+
+  &__btn:hover{
+
+ 	background: $darkRed;
+ 	color:#ffffff;
+ }
+
+}
+
+#card-detail{
+	 margin-top: 25px;
+	 margin-bottom: 25px;
+}
+

@@ -1,0 +1,11 @@
+.header{
+	background: $mainRed;
+
+	&__text-content{
+
+    text-align: center;
+
+}
+
+}
+
