@@ -28,7 +28,12 @@
 }
 
 #card-detail{
-	 margin-top: 25px;
-	 margin-bottom: 25px;
+    margin-top: 25px;
+	margin-bottom: 25px;
 }
 
+#city{
+   
+    margin-top: 25px;
+    height: 50px;
+}

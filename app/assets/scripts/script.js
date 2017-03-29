@@ -3,17 +3,27 @@
 var Moduel = (function(){
 
 
-var btn = document.getElementById("getInfoBtn");
+//var btn = document.getElementById("getInfoBtn");
+//btn.addEventListener("click", _init, false);
 
-btn.addEventListener("click", _init );
+document.getElementById("getInfoBtn").addEventListener("click",function(){
+           let city = document.getElementById("city").value;
 
-function _init() {
+     _init(city);
+    });
+
+
+
+function _init(city) {
+  //e.stopPropagation();
   var ourRequest = new XMLHttpRequest();
-  ourRequest.open('GET', 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22nome%2C%20ak%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys');
+  ourRequest.open('GET', 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22' + city + '%2C%20ak%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys');
+
   ourRequest.onload = function() {
          if (ourRequest.status >= 200 && ourRequest.status < 400) {
          var ourData = JSON.parse(ourRequest.responseText);
-         btn.disabled = true;
+         
+document.getElementById("getInfoBtn").disabled = true;
          render(ourData); 
               
     }    
@@ -28,12 +38,13 @@ function _init() {
   ourRequest.send();
     }
 
- getTitle = function(ourData){
+ (function(){
 
          let title= document.getElementById("title");
 
-              title.innerHTML = ourData.query.results.channel.title;
-}
+              title.innerHTML = "Yahoo Weather !!!"
+              //ourData.query.results.channel.title;
+})();
 
 
 function render(ourData){
@@ -65,12 +76,17 @@ function render(ourData){
  // console.log(ourData.query.results.channel.item.forecast);
    
 
-   //let x = document.getElementById("btnDetails");
+  
 
-   cardbtn_btn.addEventListener("click", getDetail(ourData) );
+  //.addEventListener("click", getDetail(ourData), false );
+   document.getElementById("btnDetails").addEventListener("click",function(){
+      
+     getDetail(ourData);
+    });
 }
 
 function getDetail(ourData){
+      
       
       for(let forecast of ourData.query.results.channel.item.forecast ){
     console.log(forecast.code + forecast.date + forecast.day + forecast.high + forecast.low + forecast.text  );
@@ -120,7 +136,7 @@ function getDetail(ourData){
 
   return {
   _init: _init,
-  getTitle:getTitle
+
  }
 
 })();
