@@ -23,7 +23,7 @@ function _init(city) {
          if (ourRequest.status >= 200 && ourRequest.status < 400) {
          var ourData = JSON.parse(ourRequest.responseText);
          
-document.getElementById("getInfoBtn").disabled = true;
+document.getElementById("getInfoBtn").disabled = false;
          render(ourData); 
               
     }    
@@ -48,7 +48,7 @@ document.getElementById("getInfoBtn").disabled = true;
 
 
 function render(ourData){
-
+   document.getElementById("colDiv").innerHTML = "";
   let col_Div = document.getElementById("colDiv");
   let card_Div = document.createElement("div");
       card_Div.setAttribute("class", "card");
@@ -79,15 +79,16 @@ function render(ourData){
   
 
   //.addEventListener("click", getDetail(ourData), false );
-   document.getElementById("btnDetails").addEventListener("click",function(){
+  /* document.getElementById("btnDetails").addEventListener("click",function(){
       
      getDetail(ourData);
-    });
+    }); */
+   getDetail(ourData);
 }
 
 function getDetail(ourData){
       
-      
+        document.getElementById("card-detail").innerHTML = "";
       for(let forecast of ourData.query.results.channel.item.forecast ){
     console.log(forecast.code + forecast.date + forecast.day + forecast.high + forecast.low + forecast.text  );
     
@@ -126,6 +127,7 @@ function getDetail(ourData){
       card_Div.appendChild(cardblock_Div);
       col_md.appendChild(card_Div);
       row_Div.appendChild(col_md);
+      //div.innerHTML = "<h5 class='card-title badge badge-warning'>" + forecast.code + "</h5>";
    } 
  
       //console.log(ourData);
