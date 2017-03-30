@@ -60,18 +60,9 @@ function render(ourData){
   let cardtitle_h4 = document.createElement("h4");
       cardtitle_h4.setAttribute("class", "card-title badge badge-warning"); 
        cardtitle_h4.innerHTML = "Available Only in : " + ourData.query.lang;
-  let cardbtn_btn = document.createElement("button");
-      //cardbtn_btn.setAttribute("onclick", "getDetail()");
-      cardbtn_btn.setAttribute("class", "btn card-main__btn btn-lg"); 
-      cardbtn_btn.setAttribute("id", "btnDetails");
-      cardbtn_btn.innerHTML="Click for Details";
-      
-
-
-
+       
       card_Div.appendChild(cardtitle_h2);
       card_Div.appendChild(cardtitle_h4);
-      card_Div.appendChild(cardbtn_btn);
       col_Div.appendChild(card_Div);
  // console.log(ourData.query.results.channel.item.forecast);
    
